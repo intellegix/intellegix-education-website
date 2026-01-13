@@ -39,3 +39,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# custom build directory
+/dist/
+
+# claude temp files
+tmpclaude-*
