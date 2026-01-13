@@ -7,7 +7,7 @@ on:
     branches: [ master, main ]
 
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
 
     steps:
@@ -33,7 +33,7 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: website-build
-        path: out/
+        path: dist/
 
     # Uncomment the deployment method you prefer:
 
@@ -58,11 +58,4 @@ jobs:
     #     NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
     #     NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
 
-    # Option 3: Deploy to GitHub Pages
-    - name: Deploy to GitHub Pages
-      uses: peaceiris/actions-gh-pages@v4
-      if: github.ref == 'refs/heads/master'
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./out
-        cname: intellegixeducation.org  # Replace with your custom domain
+    # GitHub Pages deployment removed - using external nameserver hosting
