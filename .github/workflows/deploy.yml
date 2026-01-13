@@ -46,16 +46,19 @@ jobs:
     #     vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
     #     working-directory: ./
 
-    # Option 2: Deploy to Netlify
-    # - name: Deploy to Netlify
-    #   uses: nwtgck/actions-netlify@v3.0
-    #   with:
-    #     publish-dir: './out'
-    #     production-branch: master
-    #     github-token: ${{ secrets.GITHUB_TOKEN }}
-    #     deploy-message: "Deploy from GitHub Actions"
-    #   env:
-    #     NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-    #     NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+    # Deploy to Netlify
+    - name: Deploy to Netlify
+      uses: nwtgck/actions-netlify@v3.0
+      with:
+        publish-dir: './dist'
+        production-branch: master
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        deploy-message: "Deploy from GitHub Actions"
+        enable-pull-request-comment: false
+        enable-commit-comment: false
+        overwrites-pull-request-comment: false
+      env:
+        NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+        NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
 
     # GitHub Pages deployment removed - using external nameserver hosting
